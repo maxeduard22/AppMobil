@@ -27,9 +27,79 @@
     <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <title>Hello World</title>
     <script src="http://debug-software.intel.com/target/target-script-min.js#_VYtFm8lB54qVGVvfceuXcL1VBLQRL_LvU0m76Q429w"></script>
+    <style>
+        #red, #green, #blue {
+            float: left;
+            clear: left;
+            width: 300px;
+            margin: 15px;
+        }
+
+        #swatch {
+            width: 120px;
+            height: 100px;
+            margin-top: 18px;
+            margin-left: 350px;
+            background-image: none;
+        }
+
+        #red .ui-slider-range {
+            background: #ef2929;
+        }
+
+        #red .ui-slider-handle {
+            border-color: #ef2929;
+        }
+
+        #green .ui-slider-range {
+            background: #8ae234;
+        }
+
+        #green .ui-slider-handle {
+            border-color: #8ae234;
+        }
+
+        #blue .ui-slider-range {
+            background: #729fcf;
+        }
+
+        #blue .ui-slider-handle {
+            border-color: #729fcf;
+        }
+    </style>
     <script>
+        function hexFromRGB(r, g, b) {
+            var hex = [
+              r.toString(16),
+              g.toString(16),
+              b.toString(16)
+            ];
+            $.each(hex, function (nr, val) {
+                if (val.length === 1) {
+                    hex[nr] = "0" + val;
+                }
+            });
+            return hex.join("").toUpperCase();
+        }
+        function refreshSwatch() {
+            var red = $("#red").slider("value"),
+              green = $("#green").slider("value"),
+              blue = $("#blue").slider("value"),
+              hex = hexFromRGB(red, green, blue);
+            $("#swatch").css("background-color", "#" + hex);
+        }
         $(function () {
-            $("#accordion").accordion();
+            $("#red, #green, #blue").slider({
+                orientation: "horizontal",
+                range: "min",
+                max: 255,
+                value: 127,
+                slide: refreshSwatch,
+                change: refreshSwatch
+            });
+            $("#red").slider("value", 255);
+            $("#green").slider("value", 140);
+            $("#blue").slider("value", 60);
         });
     </script>
 </head>
@@ -45,50 +115,16 @@
 
 
 
+    <p class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding:4px;">
+        <span class="ui-icon ui-icon-pencil" style="float:left; margin:-2px 5px 0 0;"></span>
+        Simple Colorpicker
+    </p>
 
+    <div id="red"></div>
+    <div id="green"></div>
+    <div id="blue"></div>
 
-
-
-
-
-
-
-
-    <div id="accordion">
-        <h3>Primera Sección</h3>
-        <div>
-            <p>
-                Esta es la primer sección
-            </p>
-        </div>
-        <h3>Segunda Sección</h3>
-        <div>
-            <p>
-               Esta es la segunda sección
-            </p>
-        </div>
-        <h3>Tercera Sección</h3>
-        <div>
-            <p>
-                Esta es la tercera sección
-            </p>
-            <ul>
-                <li>List item one</li>
-                <li>List item two</li>
-                <li>List item three</li>
-            </ul>
-        </div>
-        <h3>Cuarta Sección</h3>
-        <div>
-            <p>
-                Esta es la cuarta sección
-            </p>
-            <p>
-                Max Eduard Rosas Maldonado
-            </p>
-        </div>
-    </div>
-
+    <div id="swatch" class="ui-widget-content ui-corner-all"></div>
 
 
 

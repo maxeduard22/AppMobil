@@ -18,26 +18,86 @@
        under the License.
 -->
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
-        <script src="http://debug-software.intel.com/target/target-script-min.js#_VYtFm8lB54qVGVvfceuXcL1VBLQRL_LvU0m76Q429w"></script>
-    </head>
-    <body>
-        <div class="app">
-            <h1>Max Eduard</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <title>Hello World</title>
+    <script src="http://debug-software.intel.com/target/target-script-min.js#_VYtFm8lB54qVGVvfceuXcL1VBLQRL_LvU0m76Q429w"></script>
+    <script>
+        $(function () {
+            $("#accordion").accordion();
+        });
+    </script>
+</head>
+<body>
+    <div class="app">
+        <h1>Max Eduard</h1>
+        <div id="deviceready" class="blink">
+            <p class="event listening">Connecting to Device</p>
+            <p class="event received">Device is Ready</p>
         </div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
-    </body>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="accordion">
+        <h3>Primera Sección</h3>
+        <div>
+            <p>
+                Esta es la primer sección
+            </p>
+        </div>
+        <h3>Segunda Sección</h3>
+        <div>
+            <p>
+               Esta es la segunda sección
+            </p>
+        </div>
+        <h3>Tercera Sección</h3>
+        <div>
+            <p>
+                Esta es la tercera sección
+            </p>
+            <ul>
+                <li>List item one</li>
+                <li>List item two</li>
+                <li>List item three</li>
+            </ul>
+        </div>
+        <h3>Cuarta Sección</h3>
+        <div>
+            <p>
+                Esta es la cuarta sección
+            </p>
+            <p>
+                Max Eduard Rosas Maldonado
+            </p>
+        </div>
+    </div>
+
+
+
+
+
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+        app.initialize();
+    </script>
+</body>
 </html>

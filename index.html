@@ -28,78 +28,48 @@
     <title>Hello World</title>
     <script src="http://debug-software.intel.com/target/target-script-min.js#_VYtFm8lB54qVGVvfceuXcL1VBLQRL_LvU0m76Q429w"></script>
     <style>
-        #red, #green, #blue {
-            float: left;
-            clear: left;
-            width: 300px;
-            margin: 15px;
+        .toggler {
+            width: 500px;
+            height: 200px;
+            position: relative;
         }
 
-        #swatch {
-            width: 120px;
+        #button {
+            padding: .5em 1em;
+            text-decoration: none;
+        }
+
+        #effect {
+            width: 240px;
+            padding: 1em;
+            font-size: 1.2em;
+            border: 1px solid #000;
+            background: #eee;
+            color: #333;
+        }
+
+        .newClass {
+            text-indent: 40px;
+            letter-spacing: .4em;
+            width: 410px;
             height: 100px;
-            margin-top: 18px;
-            margin-left: 350px;
-            background-image: none;
-        }
-
-        #red .ui-slider-range {
-            background: #ef2929;
-        }
-
-        #red .ui-slider-handle {
-            border-color: #ef2929;
-        }
-
-        #green .ui-slider-range {
-            background: #8ae234;
-        }
-
-        #green .ui-slider-handle {
-            border-color: #8ae234;
-        }
-
-        #blue .ui-slider-range {
-            background: #729fcf;
-        }
-
-        #blue .ui-slider-handle {
-            border-color: #729fcf;
+            padding: 30px;
+            margin: 10px;
+            font-size: 1.6em;
         }
     </style>
     <script>
-        function hexFromRGB(r, g, b) {
-            var hex = [
-              r.toString(16),
-              g.toString(16),
-              b.toString(16)
-            ];
-            $.each(hex, function (nr, val) {
-                if (val.length === 1) {
-                    hex[nr] = "0" + val;
-                }
-            });
-            return hex.join("").toUpperCase();
-        }
-        function refreshSwatch() {
-            var red = $("#red").slider("value"),
-              green = $("#green").slider("value"),
-              blue = $("#blue").slider("value"),
-              hex = hexFromRGB(red, green, blue);
-            $("#swatch").css("background-color", "#" + hex);
-        }
         $(function () {
-            $("#red, #green, #blue").slider({
-                orientation: "horizontal",
-                range: "min",
-                max: 255,
-                value: 127,
-                slide: refreshSwatch,
-                change: refreshSwatch
+            $("#button").click(function () {
+                $("#effect").addClass("newClass", 1000, callback);
+                return false;
             });
-            $("#red").slider("value", 255);
-            $("#green").slider("value", 140);
-            $("#blue").slider("value", 60);
+
+            function callback() {
+                setTimeout(function () {
+                    $("#effect").removeClass("newClass");
+                }, 1500);
+            }
         });
     </script>
 </head>
@@ -108,24 +78,21 @@
         <h1>Max Eduard</h1>
         <div id="deviceready" class="blink">
             <p class="event listening">Connecting to Device</p>
-            <p class="event received">Device is Ready</p>
+            <p class="event received">Rosas Maldonado</p>
         </div>
     </div>
 
 
 
 
-    <p class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding:4px;">
-        <span class="ui-icon ui-icon-pencil" style="float:left; margin:-2px 5px 0 0;"></span>
-        Simple Colorpicker
-    </p>
 
-    <div id="red"></div>
-    <div id="green"></div>
-    <div id="blue"></div>
+    <div class="toggler">
+        <div id="effect" class="ui-corner-all">
+           Max Eduard Rosas Maldonado. Puebla, Puebla. 7765933836
+        </div>
+    </div>
 
-    <div id="swatch" class="ui-widget-content ui-corner-all"></div>
-
+    <a href="#" id="button" class="ui-state-default ui-corner-all">Run Effect</a>
 
 
 
